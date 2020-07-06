@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using FeedMe2.Data;
+using ElectronNET.API;
+using ElectronNET.API.Entities;
 
 namespace FeedMe2
 {
@@ -54,6 +56,22 @@ namespace FeedMe2
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+            });
+
+            var options = new BrowserWindowOptions
+            {
+                Width = 1200,
+                Height = 650,
+                MinWidth = 800,
+                MinHeight = 500,
+                Frame = false,
+                Show = false
+            };
+
+            Task.Run(async () =>
+            {
+                var mainWindow = await Electron.WindowManager.CreateWindowAsync(options);
+                mainWindow.OnReadyToShow += () => mainWindow.Show();
             });
         }
     }

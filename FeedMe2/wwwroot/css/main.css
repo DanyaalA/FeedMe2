@@ -1,0 +1,27 @@
+﻿.navbar-top {
+    background-color: rgb(32, 132, 180);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0px;
+    height: 24px;
+    -webkit-app-region: drag;/
+}
+
+.title {
+    position: absolute;
+}
+
+.navbar-top p {
+    font-size: 20px;
+}
+
+.buttons {
+    position: absolute;
+    right: 5px;
+}
+
+body {
+    user-select: none; /* Standard */
+}
