@@ -1,7 +1,24 @@
 ﻿@page "/"
+<div class="login">
+    <div class="login-inputs">
+        <h2>Login</h2>
+        <input placeholder="Username"  @bind="uName" />
+        <input placeholder="Password"  @bind="pWord"/>
+        <button @onclick="AuthenticateLogin" class="">Login</button>
+    </div>
 
-<h1>Hello, world!</h1>
+</div>
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    string uName, pWord;
+
+    private void AuthenticateLogin()
+    {
+        Console.WriteLine("Checking Login");
+        if (uName == "55" && pWord == "55")
+        {
+            Console.WriteLine("Logged In");
+        }
+    }
+}

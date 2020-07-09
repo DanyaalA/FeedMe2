@@ -1,27 +1,65 @@
-﻿.navbar-top {
-    background-color: rgb(32, 132, 180);
+﻿nav {
+    background-color: #336d88;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     top: 0px;
     height: 24px;
-    -webkit-app-region: drag;/
+    -webkit-app-region: drag;
+    color: white;
 }
 
-.title {
+nav .title {
     position: absolute;
 }
 
-.navbar-top p {
+nav p {
     font-size: 20px;
 }
 
-.buttons {
-    position: absolute;
-    right: 5px;
+nav .buttons {
+        position: absolute;
+        right: 5px;
 }
 
 body {
     user-select: none; /* Standard */
+    background-color: #e4e3e3;
+}
+
+.login {
+    position: absolute;
+    top: 35%;
+    left: 41%;
+    justify-content: center;
+}
+
+.login h2 {
+    text-align: center;
+}
+
+.login-inputs {
+    position: absolute;
+    border: 1.5px solid #84a9ac;
+    padding: 50px;
+}
+
+.login-inputs input {
+    margin: 5px;
+    border: 0px;
+    border-bottom: 1.5px solid rgb(30, 144, 255);
+    outline: none;
+    transition: border-bottom 0.4s ease-out;
+    background-color: #e4e3e3;
+}
+
+.login-inputs button {
+    margin: 10px 5px 5px 60px;
+}
+
+.login-inputs input:focus {
+    transition: border-bottom 0.4s ease-in-out;
+    border: none;
+    border-bottom: 1.5px solid rgb(223, 123, 75);
 }

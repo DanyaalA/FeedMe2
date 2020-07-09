@@ -1,19 +1,18 @@
-﻿<nav class="navbar-top">
+﻿<nav>
     <p class="title">FeedMe</p>
     <div class="buttons">
-        <a class="dismiss">🗕</a>
-        <a class="dismiss">🗖</a>
-        <a class="dismiss">🗙</a>
+        <a>🗕</a>
+        <a>🗖</a>
+        <a href="counter" @onclick="QuitApp">🗙</a>
     </div>
 </nav>
 
 @code {
-    private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    private void QuitApp()
     {
-        collapseNavMenu = !collapseNavMenu;
+        Console.WriteLine("Test");
+        ElectronNET.API.Electron.App.Quit();
     }
+
 }
