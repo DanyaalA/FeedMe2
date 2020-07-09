@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FeedMe.Network
 {
-    class Receive
+    public class Receive
     {
         private byte[] ReceiveData(Socket sock)
         {

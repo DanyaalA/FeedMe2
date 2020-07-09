@@ -6,9 +6,9 @@ using System.Threading;
 
 namespace FeedMe.Network
 {
-    class Send
+    public class Send
     {
-        public void SendData(Socket sock, byte[] data)
+        private void SendData(Socket sock, byte[] data)
         {
             sock.Send(data, 0, data.Length, SocketFlags.None);
         }
