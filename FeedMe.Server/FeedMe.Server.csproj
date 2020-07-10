@@ -9,4 +9,14 @@
     <ProjectReference Include="..\FeedMe.Network\FeedMe.Network.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Customer\" />
+    <Folder Include="Data\" />
+    <Folder Include="Vendor\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.20" />
+  </ItemGroup>
+
 </Project>
