@@ -2,8 +2,8 @@
 <div class="login">
     <div class="login-inputs">
         <h2>Login</h2>
-        <input placeholder="Username"  @bind="uName" />
-        <input placeholder="Password"  @bind="pWord"/>
+        <input placeholder="Username" @bind="uName" />
+        <input placeholder="Password" @bind="pWord" />
         <button @onclick="AuthenticateLogin" class="">Login</button>
     </div>
 
@@ -12,13 +12,38 @@
 
 @code {
     string uName, pWord;
+    FeedMe.Core.Models.Customer customer;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+
+        if (!FeedMe.Core.Server.Connect.Connected && firstRender)
+        {
+            customer = new FeedMe.Core.Models.Customer();
+            FeedMe.Core.Server.Connect serverConnection = new FeedMe.Core.Server.Connect();
+            serverConnection.InitializeConnection(out System.Net.Sockets.Socket clientSock);
+            customer.SetClientSocket(clientSock);
+        }
+
+        base.OnAfterRender(firstRender);
+    }
 
     private void AuthenticateLogin()
     {
         Console.WriteLine("Checking Login");
-        if (uName == "55" && pWord == "5z")
+
+        customer.Messenger.SendMessage("Login");
+        customer.Messenger.SendMessage(uName);
+        customer.Messenger.SendMessage(pWord);
+        string response = customer.Messenger.ReceiveMessage();
+
+        if (response == "True")
         {
             Console.WriteLine("Logged In");
+        }
+        else
+        {
+            Console.WriteLine("Invalid Login");
         }
     }
 }

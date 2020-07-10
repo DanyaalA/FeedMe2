@@ -7,7 +7,7 @@ using System.Text;
 
 namespace FeedMe.Core.Server
 {
-    class Messenger
+    public class Messenger
     {
         private readonly Socket clientSock;
         private Receive receiver = new Receive();

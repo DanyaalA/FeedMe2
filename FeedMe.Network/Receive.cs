@@ -19,6 +19,7 @@ namespace FeedMe.Network
 
         public string ReceiveMessage(Socket sock)
         {
+
             return Encoding.UTF8.GetString(ReceiveData(sock));
         }
     }

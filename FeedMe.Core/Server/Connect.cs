@@ -9,15 +9,15 @@ namespace FeedMe.Core.Server
 {
     public class Connect
     {
-        public int PORT = 4030;
-        public string IP_ADDRESS = "127.0.0.1";
-        private Socket sSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private bool connected = false;
+        private string IP_ADDRESS = "127.0.0.1";
+        private int PORT = 4030;
+        protected internal static Socket sSock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        public static bool Connected = false; //Has To Be Static As its important not to connect to the server twice
 
         public bool InitializeConnection(out Socket sock)
         {
             sock = sSock;
-            if (connected) { Console.WriteLine("Already Connected"); return true; }
+            if (Connected) { Console.WriteLine("Already Connected"); return true; }
 
             int attempts = 0;
 
@@ -26,13 +26,13 @@ namespace FeedMe.Core.Server
                 try
                 {
                     IPEndPoint ipe = new IPEndPoint(IPAddress.Parse(IP_ADDRESS), PORT);
-                    sSock.Bind(ipe);
-                    sSock.Listen(100);
+                    sSock.Connect(ipe);
+                    Connected = true;
                     sock = sSock;
 
                     if (sSock.Connected)
                     {
-                        connected = true; 
+                        Connected = true; 
                         return true;
                     }
                 }
@@ -54,6 +54,7 @@ namespace FeedMe.Core.Server
         public void CloseConnection()
         {
             sSock.Close(500);
+            Connected = false;
         }
     }
 }

@@ -5,9 +5,8 @@ using System.Text;
 
 namespace FeedMe.Core.Models
 {
-    class Customer : Client
+    public class Customer : Client
     {
-
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

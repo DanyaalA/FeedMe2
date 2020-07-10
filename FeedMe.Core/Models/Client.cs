@@ -7,10 +7,11 @@ using System.Text;
 
 namespace FeedMe.Core.Models
 {
-    class Client
+    public class Client
     {
+        public EventHandler<string> RaiseClientConnectedEvent;
         public Messenger Messenger { get; set; }
-        private Socket clientSock { get; set; }
+        private Socket ClientSock { get; set; }
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -18,10 +19,18 @@ namespace FeedMe.Core.Models
         public bool Admin { get; set; }
         public string AvatarName { get; set; }
 
+        public void SetClientSocket(Socket sock)
+        {
+            ClientSock = sock;
+            UpdateMessenger();
+        }
 
         public void UpdateMessenger()
         {
-            Messenger = new Messenger(clientSock);
+            Messenger = new Messenger(ClientSock);
+            Console.WriteLine("Set New Client");
+            Console.WriteLine(ClientSock.LocalEndPoint.ToString());
+            Messenger.SendMessage("Hi");
         }
     }
 }
