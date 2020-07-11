@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FeedMe.Server.Models
 {
@@ -16,9 +17,9 @@ namespace FeedMe.Server.Models
         private readonly Receive receiver = new Receive();
         private readonly Send sender = new Send();
 
-        public string ReceiveMessage()
+        public async Task<string> ReceiveMessage()
         {
-            return receiver.ReceiveMessage(ClientSocket);
+            return await receiver.ReceiveMessage(ClientSocket);
         }
 
         public void SendMessage(string message)

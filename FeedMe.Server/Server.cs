@@ -1,4 +1,5 @@
 ﻿using FeedMe.Server.Models;
+using FeedMe.Server.Shared.Authentication;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -51,28 +52,17 @@ namespace FeedMe.Server
             return client;
         }
 
-        private void HandleClient(Client client)
+        private async void HandleClient(Client client)
         {
             Console.WriteLine("Running Da Tings");
             while (client.Connected)
             {
-                string command = client.ReceiveMessage();
+                Network.Commands command = (Network.Commands)Convert.ToInt32(await client.ReceiveMessage());
                 Console.WriteLine(command + " Command");
                 switch (command)
                 {
-                    case "Login":
-                        string uName = client.ReceiveMessage();
-                        string pWord = client.ReceiveMessage();
-                        if (uName == "55" && pWord == "55")
-                        {
-                            client.SendMessage("True");
-                        }
-                        else
-                        {
-
-                            client.SendMessage("False");
-
-                        }
+                    case Network.Commands.Login:
+                        new Login(ref client).AuthenticateLogin();
                         break;
                 }
 

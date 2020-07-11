@@ -28,14 +28,14 @@
         base.OnAfterRender(firstRender);
     }
 
-    private void AuthenticateLogin()
+    private async void AuthenticateLogin()
     {
         Console.WriteLine("Checking Login");
 
         customer.Messenger.SendMessage("Login");
         customer.Messenger.SendMessage(uName);
         customer.Messenger.SendMessage(pWord);
-        string response = customer.Messenger.ReceiveMessage();
+        string response = await customer.Messenger.ReceiveMessage();
 
         if (response == "True")
         {

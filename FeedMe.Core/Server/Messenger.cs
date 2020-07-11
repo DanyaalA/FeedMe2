@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FeedMe.Core.Server
 {
@@ -28,9 +29,9 @@ namespace FeedMe.Core.Server
         #endregion
 
         #region Receiver
-        public string ReceiveMessage()
+        public async Task<string> ReceiveMessage()
         {
-            return receiver.ReceiveMessage(clientSock);
+            return await receiver.ReceiveMessage(clientSock);
         }
 
 

@@ -1,7 +1,9 @@
 ﻿
+using FeedMe.Server.Data;
 using FeedMe.Server.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace FeedMe.Server.Shared.Authentication
@@ -9,14 +11,37 @@ namespace FeedMe.Server.Shared.Authentication
     class Login
     {
         private string username, pword;
-        public Login(Client client)
+        private Client client;
+        public Login(ref Client person)
         {
-            username = client.ReceiveMessage();
-            pword = client.ReceiveMessage();
+            client = person;
         }
+
         public void AuthenticateLogin()
         {
+            GetClientDetails();
+            CheckDetails(username, pword);
 
+        }
+
+        private async void GetClientDetails()
+        {
+            username = await client.ReceiveMessage();
+            pword = await client.ReceiveMessage();
+        }
+
+        private async void CheckDetails(string username, string password)
+        {
+            DataTable results = await MySqlConnector.ExecuteQuery($"SELECT username, `password` FROM Customers WHERE username = '{username}' && `password` = '{password}'");
+
+            if (results.Rows.Count > 0)
+            {
+                client.SendMessage("True");
+            }
+            else 
+            {
+                client.SendMessage("False");
+            }
         }
     }
 }
