@@ -25,12 +25,9 @@ namespace FeedMe.Core.Models
             UpdateMessenger();
         }
 
-        public void UpdateMessenger()
+        private void UpdateMessenger()
         {
             Messenger = new Messenger(ClientSock);
-            Console.WriteLine("Set New Client");
-            Console.WriteLine(ClientSock.LocalEndPoint.ToString());
-            Messenger.SendMessage("Hi");
         }
     }
 }

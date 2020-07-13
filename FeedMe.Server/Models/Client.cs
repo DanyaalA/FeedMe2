@@ -17,9 +17,9 @@ namespace FeedMe.Server.Models
         private readonly Receive receiver = new Receive();
         private readonly Send sender = new Send();
 
-        public async Task<string> ReceiveMessage()
+        public string ReceiveMessage()
         {
-            return await receiver.ReceiveMessage(ClientSocket);
+            return receiver.ReceiveMessage(ClientSocket);
         }
 
         public void SendMessage(string message)

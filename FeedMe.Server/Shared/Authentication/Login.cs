@@ -24,18 +24,23 @@ namespace FeedMe.Server.Shared.Authentication
 
         }
 
-        private async void GetClientDetails()
+        private void GetClientDetails()
         {
-            username = await client.ReceiveMessage();
-            pword = await client.ReceiveMessage();
-            client.IsVendor = Convert.ToBoolean(await client.ReceiveMessage());
+            username = client.ReceiveMessage();
+            pword = client.ReceiveMessage();
+            client.IsVendor = Convert.ToBoolean(client.ReceiveMessage());
         }
 
         private async void CheckDetails(string username, string password)
         {
             string table = "Customers";
-            if (client.IsVendor) table = "Vendors";
-            DataTable results = await MySqlConnector.ExecuteQuery($"SELECT username, `password` FROM {table} WHERE username = '{username}' && `password` = '{password}'");
+            string name = "username";
+            if (client.IsVendor)
+            {
+                table = "Vendors";
+                name = "Name";
+            }
+            DataTable results = await MySqlConnector.ExecuteQuery($"SELECT `{name}`, `password` FROM {table} WHERE {name} = '{username}' && `password` = '{password}'");
 
             if (results.Rows.Count > 0)
             {

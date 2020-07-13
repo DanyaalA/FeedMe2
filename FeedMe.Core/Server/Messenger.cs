@@ -26,17 +26,27 @@ namespace FeedMe.Core.Server
             sender.SendMessage(clientSock, message);  
         }
 
+        public void SendInt32(int val)
+        {
+            sender.SendMessage(clientSock, val.ToString());
+        }
+
+        public void SendBoolean(bool Bool)
+        {
+            sender.SendMessage(clientSock, Bool.ToString());
+        }
+
         public void SendCommand(Commands command)
         {
-            sender.SendMessage(clientSock, command.ToString());
+            sender.SendMessage(clientSock, ((int)command).ToString());
         }
 
         #endregion
 
         #region Receiver
-        public async Task<string> ReceiveMessage()
+        public string ReceiveMessage()
         {
-            return await receiver.ReceiveMessage(clientSock);
+            return receiver.ReceiveMessage(clientSock);
         }
 
 
