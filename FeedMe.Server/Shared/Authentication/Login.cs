@@ -28,11 +28,14 @@ namespace FeedMe.Server.Shared.Authentication
         {
             username = await client.ReceiveMessage();
             pword = await client.ReceiveMessage();
+            client.IsVendor = Convert.ToBoolean(await client.ReceiveMessage());
         }
 
         private async void CheckDetails(string username, string password)
         {
-            DataTable results = await MySqlConnector.ExecuteQuery($"SELECT username, `password` FROM Customers WHERE username = '{username}' && `password` = '{password}'");
+            string table = "Customers";
+            if (client.IsVendor) table = "Vendors";
+            DataTable results = await MySqlConnector.ExecuteQuery($"SELECT username, `password` FROM {table} WHERE username = '{username}' && `password` = '{password}'");
 
             if (results.Rows.Count > 0)
             {

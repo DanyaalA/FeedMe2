@@ -32,9 +32,11 @@
     {
         Console.WriteLine("Checking Login");
 
+        //customer.Messenger.SendCommand(FeedMe.Network.Commands.Login);
         customer.Messenger.SendMessage("Login");
         customer.Messenger.SendMessage(uName);
         customer.Messenger.SendMessage(pWord);
+        customer.Messenger.SendMessage(false.ToString());
         string response = await customer.Messenger.ReceiveMessage();
 
         if (response == "True")

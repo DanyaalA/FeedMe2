@@ -57,13 +57,17 @@ namespace FeedMe.Server
             Console.WriteLine("Running Da Tings");
             while (client.Connected)
             {
-                Network.Commands command = (Network.Commands)Convert.ToInt32(await client.ReceiveMessage());
+                //Network.Commands command = (Network.Commands)Convert.ToInt32(await client.ReceiveMessage());
+                string command = await client.ReceiveMessage();
                 Console.WriteLine(command + " Command");
                 switch (command)
                 {
-                    case Network.Commands.Login:
+                    case "Login":
                         new Login(ref client).AuthenticateLogin();
                         break;
+                    //case Network.Commands.Login:
+                    //    new Login(ref client).AuthenticateLogin();
+                    //    break;
                 }
 
 

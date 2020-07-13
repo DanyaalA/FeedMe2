@@ -26,6 +26,11 @@ namespace FeedMe.Core.Server
             sender.SendMessage(clientSock, message);  
         }
 
+        public void SendCommand(Commands command)
+        {
+            sender.SendMessage(clientSock, command.ToString());
+        }
+
         #endregion
 
         #region Receiver
