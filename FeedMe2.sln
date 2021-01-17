@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMe2", "FeedMe2\FeedMe2.csproj", "{5FF614BB-E982-4DD9-B3A9-1C60E9FCFBF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.Server", "FeedMe.Server\FeedMe.Server.csproj", "{186F5D20-7B05-429B-8E3F-404AA726BA73}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMe.Server", "FeedMe.Server\FeedMe.Server.csproj", "{186F5D20-7B05-429B-8E3F-404AA726BA73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.Network", "FeedMe.Network\FeedMe.Network.csproj", "{2FEA4604-1D53-49ED-9B62-F76EEEAC3609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMe.Network", "FeedMe.Network\FeedMe.Network.csproj", "{2FEA4604-1D53-49ED-9B62-F76EEEAC3609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMe.Core", "FeedMe.Core\FeedMe.Core.csproj", "{2020A5F4-9CE8-4291-AD77-A42732F6155F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FeedMe.Core", "FeedMe.Core\FeedMe.Core.csproj", "{2020A5F4-9CE8-4291-AD77-A42732F6155F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

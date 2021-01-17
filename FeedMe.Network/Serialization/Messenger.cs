@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeedMe.Core.Server
+namespace FeedMe.Network.Serialization
 {
     public class Messenger
     {
@@ -23,7 +23,7 @@ namespace FeedMe.Core.Server
         #region Send
         public void SendMessage(string message)
         {
-            sender.SendMessage(clientSock, message);  
+            sender.SendMessage(clientSock, message);
         }
 
         public void SendInt32(int val)

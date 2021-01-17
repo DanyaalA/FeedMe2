@@ -30,16 +30,10 @@
 
     private void AuthenticateLogin()
     {
-        Console.WriteLine("Checking Login");
 
-        customer.Messenger.SendCommand(FeedMe.Network.Commands.Login);
-        //customer.Messenger.SendMessage("Login");
-        customer.Messenger.SendMessage(uName);
-        customer.Messenger.SendMessage(pWord);
-        customer.Messenger.SendBoolean(false);
-        string response = customer.Messenger.ReceiveMessage();
+        bool resp = new FeedMe.Core.Authentication.Login().AuthenticateLogin(customer, uName, pWord, false);
 
-        if (response == "True")
+        if (resp)
         {
             Console.WriteLine("Logged In");
         }
