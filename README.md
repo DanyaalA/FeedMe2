@@ -1,2 +1,2 @@
 # FeedMe2
- A Re-Creation of my FeedMe NEA using Electrum
+ A Re-Creation of my FeedMe NEA using Electron
